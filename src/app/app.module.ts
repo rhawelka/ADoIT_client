@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 
 import {AppComponent} from './app.component';
 import {ProfileComponent} from './profile/profile.component';
@@ -11,14 +11,9 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {AuthenticationService} from './authentication.service';
 import {AuthGuardService} from './auth-guard.service';
+import {TasksService} from './tasks.service';
 import {HomeComponent} from './home/home.component';
-
-const routes : Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]}
-]
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
     declarations: [
@@ -26,12 +21,13 @@ const routes : Routes = [
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        ProfileComponent
+        ProfileComponent,
+        TasksComponent
     ],
     imports: [
         BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule
     ],
-    providers: [AuthGuardService,AuthenticationService],
+    providers: [AuthGuardService,AuthenticationService, TasksService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
