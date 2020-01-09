@@ -9,11 +9,12 @@ import {AppComponent} from './app.component';
 import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
-import {AuthenticationService} from './authentication.service';
-import {AuthGuardService} from './auth-guard.service';
-import {TasksService} from './tasks.service';
+import {AuthenticationService} from './services/authentication.service';
+import {AuthGuardService} from './services/auth-guard.service';
+import {TasksService} from './services/tasks.service';
 import {HomeComponent} from './home/home.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,7 @@ import { TasksComponent } from './tasks/tasks.component';
         TasksComponent
     ],
     imports: [
-        BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule
+        BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule, ParticlesModule
     ],
     providers: [AuthGuardService,AuthenticationService, TasksService],
     bootstrap: [AppComponent]

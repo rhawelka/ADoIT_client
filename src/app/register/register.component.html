@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-6 mt-5 mx-auto">
+        <div class="col-md-6 mt-5 mx-auto text-white">
             <form (submit)="register()">
-                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-                <div class="form-group">
+                <h1 class="h3 mb-3 font-weight-normal Anton">Register</h1>
+                <div class="form-group Oswald">
                     <label for="first_name">First Name</label>
                     <input
                         type="text"
@@ -11,23 +11,25 @@
                         name="first_name"
                         placeholder="enter first name"
                         [(ngModel)]="credentials.first_name"></div>
-                    <div class="form-group">
+                    <div class="form-group Oswald">
                         <label for="last_name">Last Name</label>
                         <input
+
                             type="text"
                             class="form-control"
                             name="last_name"
                             placeholder="last_name"
                             [(ngModel)]="credentials.last_name"></div>
-                        <div class="form-group">
+                        <div class="form-group Oswald">
                             <label for="email">Email Address</label>
                             <input
                                 type="email"
                                 class="form-control"
                                 name="email"
+                                email
                                 placeholder="email"
                                 [(ngModel)]="credentials.email"></div>
-                            <div class="form-group">
+                            <div class="form-group  Oswald">
                                 <label for="password">Password</label>
                                 <input
                                     type="password"

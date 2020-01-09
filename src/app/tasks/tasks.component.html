@@ -1,39 +1,42 @@
 <div class="container">
-    <form #todoForm="ngForm" (ngSubmit)="onSubmit(taskName.value); todoForm.resetForm()">
-      <div class="form-group">
-      <h1 class="text-center ">Todo App</h1>
-        <div class="input-group-prepend">
-            <input type="text" #taskName  class="form-control" placeholder="Add Todo" name="task" ngModel>
-          <button type="submit" class="input-group-text">
-          <i class="material-icons">add</i></button>
-        </div>
-      </div>
-      <div class="data">
-      <ul class="list-unstyled">
-        <li *ngFor="let task of tasks">{{task.task_name}} <i (click)="delete(task)" class="material-icons">delete</i></li>
-      </ul>
-    </div>
-    </form>
-  </div>
+    <form
+        #todoForm="ngForm"
+        (ngSubmit)="onSubmit(taskName.value); todoForm.resetForm()">
+        <div class="form-group">
+            <h1 class="text-center Anton">Todo App</h1>
+            <div class="input-group-prepend">
+                <input
+                    type="text"
+                    #taskName
+                    class="form-control"
+                    placeholder="Add Todo"
+                    name="task"
+                    ngModel>
+                    <button type="submit" class="input-group-text">
+                        <i class="material-icons">add</i>
+                    </button>
+                </div>
+            </div>
 
-        <!-- <table class="table">
-            <tr *ngFor="let task of tasks">
-                <td class="text-left">
-                    <a (click)="edit(task)">
-                        <span *ngIf="task!==editTask">{{task.task_name}}</span>
+            <!-- to do list  -->
+            <div class="data">
+                <ul class="list-unstyled">
+                    <li *ngFor="let task of tasks; let i = index" >
+                        <span *ngIf="task!==editTask" (click)="edit(task)" style="word-wrap: break-word;">{{task.task_name}}</span>
                         <input
+                            name="task{{i}}"
                             *ngIf="task===editTask"
                             [(ngModel)]="task.task_name"
                             (blur)="update()"
-                            (keyup.enter)="update()"></a>
-                    </td>
-                    <td class="text-right">
-                        <button class="btn btn-danger" title="delete task" (click)="delete(task)">Delete</button>
-                    </td>
-                </tr>
-            </table> -->
+                            (keyup.enter)="update()">
+                            <i (click)="delete(task)" class="material-icons">delete</i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card card-body bg-light text-center Oswald">
+                    <span class="small">*click on item to edit and click elsewhere to update</span>
+                </div>
+            </form>
 
-        <!-- <div class="card card-body bg-light text-center">
-                <span class="small">*click on item to edit and click elsewhere to update</span>
-            </div> -->
 
+        </div>

@@ -100,6 +100,12 @@ export class AuthenticationService {
       })
     }
 
+    public todo(): Observable<any> {
+      return this._http.get('/todo', {
+        headers: {Authorization: `${this.getToken()}`}
+      })
+    }
+
     public logout():void {
       this.token = '';
       window.localStorage.removeItem('userToken');
