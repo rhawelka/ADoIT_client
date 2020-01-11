@@ -1,34 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthenticationService, TokenPayload} from '../services/authentication.service';
-import { Router } from '@angular/router';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {AuthenticationService} from '../services/authentication.service';
+import {Router} from '@angular/router';
+import {User} from '../models/user';
+import {NgForm} from '@angular/forms';
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+@Component({selector: 'app-login', templateUrl: './login.component.html', styleUrls: ['./login.component.css']})
 export class LoginComponent implements OnInit {
 
-  credentials: TokenPayload = {
-    id: 0,
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: ''
-  }
+  @ViewChild('loginForm', {static: false})
+  loginForm : NgForm;
+  user = new User();
 
-  constructor(private _auth: AuthenticationService, private router: Router) { }
+    constructor(private _auth : AuthenticationService, private router : Router) {}
 
-  login() {
-    this._auth.login(this.credentials).subscribe( () => {
-      this.router.navigateByUrl('/todo')
-    },
-    err => {
-      console.error(err);
-    });
-  }
+    onSubmit(){
+      this.login();
+    }
 
-  ngOnInit() {
-  }
+    login() {
+        this
+            ._auth
+            .login(this.user)
+            .subscribe(() => {
+                this
+                    .router
+                    .navigateByUrl('/todo');
+            }, err => {
+                console.error(err);
+            });
+    }
+
+    ngOnInit() {}
 
 }

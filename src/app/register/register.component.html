@@ -1,43 +1,72 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mt-5 mx-auto text-white">
-            <form (submit)="register()">
+
+          <!-- FORM -->
+
+            <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
                 <h1 class="h3 mb-3 font-weight-normal Anton">Register</h1>
                 <div class="form-group Oswald">
                     <label for="first_name">First Name</label>
                     <input
                         type="text"
+                        #first_name="ngModel"
+                        id="first_name"
                         class="form-control"
                         name="first_name"
                         placeholder="enter first name"
-                        [(ngModel)]="credentials.first_name"></div>
+                        [(ngModel)]="user.first_name"
+                        required></div>
+                    <small
+                        *ngIf="!first_name.valid && first_name.touched"
+                        id="firstNameHelp"
+                        class="form-text text-danger mb-2">Field required</small>
                     <div class="form-group Oswald">
                         <label for="last_name">Last Name</label>
                         <input
-
+                            id="last_name"
+                            #last_name="ngModel"
                             type="text"
                             class="form-control"
                             name="last_name"
                             placeholder="last_name"
-                            [(ngModel)]="credentials.last_name"></div>
+                            [(ngModel)]="user.last_name"
+                            required></div>
+                        <small
+                            *ngIf="!last_name.valid && last_name.touched"
+                            id="lastNameHelp"
+                            class="form-text text-danger mb-2">Field required</small>
                         <div class="form-group Oswald">
                             <label for="email">Email Address</label>
                             <input
+                                id="email"
                                 type="email"
                                 class="form-control"
                                 name="email"
                                 email
+                                #email="ngModel"
                                 placeholder="email"
-                                [(ngModel)]="credentials.email"></div>
+                                [(ngModel)]="user.email"
+                                required></div>
+                                <small
+                                        *ngIf="!email.valid && email.touched"
+                                        id="emailHelp"
+                                        class="form-text text-danger mb-2">Field required</small>
                             <div class="form-group  Oswald">
                                 <label for="password">Password</label>
                                 <input
+                                  #password="ngModel"
                                     type="password"
                                     class="form-control"
                                     name="password"
                                     placeholder="password"
-                                    [(ngModel)]="credentials.password"></div>
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                                    [(ngModel)]="user.password"
+                                    required></div>
+                                    <small
+                                        *ngIf="!password.valid && password.touched"
+                                        id="passwordHelp"
+                                        class="form-text text-danger mb-2">Field required</small>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!contactForm.valid">Sign in</button>
                             </form>
                         </div>
                     </div>

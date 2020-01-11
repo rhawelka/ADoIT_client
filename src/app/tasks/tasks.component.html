@@ -28,7 +28,7 @@
                             *ngIf="task===editTask"
                             [(ngModel)]="task.task_name"
                             (blur)="update()"
-                            (keyup.enter)="update()">
+                            (keydown.enter)="update()">
                             <i (click)="delete(task)" class="material-icons">delete</i>
                         </li>
                     </ul>
