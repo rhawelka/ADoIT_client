@@ -37,6 +37,8 @@ export class TasksComponent implements OnInit {
             .getTasks()
             .subscribe(tasks => {
                 this.tasks = tasks;
+            }, err => {
+                console.error(err);
             })
     }
 
@@ -48,7 +50,10 @@ export class TasksComponent implements OnInit {
         this
             ._taskService
             .addTask(this.task)
-            .subscribe(task => this.tasks.push(task));
+            .subscribe(task => {this.tasks.push(task)},
+        err => {
+            console.error(err);
+        });
     }
 
     delete(task : Task) : void {
@@ -58,7 +63,11 @@ export class TasksComponent implements OnInit {
         this
             ._taskService
             .deleteTask(task.id)
-            .subscribe();
+            .subscribe(
+             err => {
+                console.error(err);
+            }
+            );
     }
 
     edit(task) {
@@ -78,7 +87,9 @@ export class TasksComponent implements OnInit {
                     if (ix > -1) {
                         this.tasks[ix] = task;
                     }
-                });
+                }, err => {
+                  console.error(err);
+              });
             this.editTask = undefined;
         }
     }

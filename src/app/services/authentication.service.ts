@@ -19,14 +19,6 @@ interface TokenResponse {
     token: string;
 }
 
-// export interface User {
-//     id?: number;
-//     first_name?: string;
-//     last_name?: string;
-//     email?: string;
-//     password?: string;
-// }
-
 @Injectable()
 export class AuthenticationService {
     private token : string;

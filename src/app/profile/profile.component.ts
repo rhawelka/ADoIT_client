@@ -5,7 +5,8 @@ import {AuthenticationService, UserDetails} from '../services/authentication.ser
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [AuthenticationService]
 })
 export class ProfileComponent implements OnInit {
 

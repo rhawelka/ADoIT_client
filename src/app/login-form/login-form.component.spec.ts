@@ -1,27 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TasksComponent } from './tasks.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { LoginFormComponent } from './login-form.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
-import { HttpClient, HttpHandler } from '@angular/common/http';
-import { TasksService } from '../services/tasks.service';
+import { HttpClient,HttpHandler } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('TasksComponent', () => {
-  let component: TasksComponent;
-  let fixture: ComponentFixture<TasksComponent>;
+describe('LoginFormComponent', () => {
+  let component: LoginFormComponent;
+  let fixture: ComponentFixture<LoginFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule,RouterTestingModule.withRoutes([]) ],
-      declarations: [ TasksComponent ],
-      providers:[AuthenticationService, HttpClient,HttpHandler, TasksService]
+      declarations: [ LoginFormComponent ],
+      providers:[AuthenticationService, HttpClient,HttpHandler]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TasksComponent);
+    fixture = TestBed.createComponent(LoginFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
